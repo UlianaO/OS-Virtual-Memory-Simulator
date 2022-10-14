@@ -13,6 +13,8 @@ void fifo()
     int numWrites = 0;
     cout << "FIFO" << endl;
 
+    /* inputVector has all the traces from .trace files */
+
     for (int i = 0; i < inputVector.size(); i++)
     {
         // Page is in FIFO cache/page table
@@ -21,7 +23,6 @@ void fifo()
         if (indexFound != FIFO.end())
         {
             //cout << "HIT" << endl;
-
             // Solution: Update write if ‘W’ encountered
             if (inputVector[i].getOperation() == 'W')
             {
@@ -31,7 +32,6 @@ void fifo()
         else
         {
             //cout << "MISS" << endl;
-
             // Page is NOT in FIFO and FIFO is NOT full
             if (FIFO.size() < numOfFrames)
             {
