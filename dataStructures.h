@@ -43,4 +43,4 @@ class PageReplacementAlgorithm
 
         void fifo();
         void lru();
-        void vms();
+        void segfifo();

@@ -9,7 +9,7 @@ extern int numOfFrames;
 extern int p;
 void frontFifo_to_frontLru(deque <PageEntry>& FIFO, deque <PageEntry>& LRU);
 
-void vms()
+void segfifo()
 {
     PageEntry pe();
     deque <PageEntry> FIFO_MAIN;

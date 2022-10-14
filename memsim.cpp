@@ -16,7 +16,7 @@
 
     void fifo();
     void lru();
-    void vms();
+    void segfifo();
 
 // ULIANA CHECKKKKKKKKKKK
 
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]) {
     else if (algorithm == "lru")
         lru();
     else if (algorithm == "vms")
-        vms();
+        segfifo();
     else
     {
         cout << "Invalid algorithm." << endl;
