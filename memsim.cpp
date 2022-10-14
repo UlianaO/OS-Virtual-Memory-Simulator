@@ -26,7 +26,8 @@ int main(int argc, char* argv[]) {
     // Check if file is in directory
     filePath = "bzip.trace";
     numOfFrames = 64;
-    algorithm = "fifo";
+    algorithm = "vms";
+    p = 30;
     mode = "quiet";
 
     // Get inputs from file and store them
@@ -43,7 +44,7 @@ int main(int argc, char* argv[]) {
 
 
 
-    fifo();
+    vms();
 
 
 
