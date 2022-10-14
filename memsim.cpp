@@ -23,51 +23,17 @@
 int main(int argc, char* argv[]) {
 	std::cout << "Hello" << std::endl;
 
-    // Check if file is in directory
-    filePath = "bzip.trace";
-    numOfFrames = 64;
-    algorithm = "vms";
-    p = 30;
-    mode = "quiet";
-
-    // Get inputs from file and store them
-    unsigned addr;
-    char rw;
-    FILE* file = fopen(filePath.c_str(), "r");
-    while (fscanf(file, "%x %c", &addr, &rw) != EOF)
-    {
-        // Store info (create objects)
-        PageEntry pe(addr, rw);
-        inputVector.push_back(pe);  // Store adress and r/w
-    }
-    cout << "Done reading file" << endl;
-
-
-
-    vms();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // the input in the format: memsim <tracefile> <nframes> <lru|fifo|vms> <debug|quiet> 
-   /* if (argc >= 5) {
+   if (argc >= 5) {
         filePath = makeLowerCase(argv[1]);
         numOfFrames = stoi(argv[2]);
         algorithm = makeLowerCase(argv[3]);
-        mode = makeLowerCase(argv[4]);
+        if (algorithm == "vms") {
+            p = stoi(argv[4]);
+            mode = makeLowerCase(argv[5]);
+        }
+        else
+            mode = makeLowerCase(argv[4]);
     } 
 
     // Check if file is in directory
@@ -105,9 +71,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    */
-    // Close files
-    //inFile.close();
+
+    //Close files
+    inFile.close();
     fclose(file);
 	return 0;
 }
