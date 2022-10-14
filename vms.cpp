@@ -1,6 +1,7 @@
 // File that implements segmented-fifo polciy 
 #include "policies.h"
 #include "dataStructures.h"
+#include "deque"
 
 extern vector<PageEntry> inputVector;
 extern int numOfFrames;
@@ -9,8 +10,9 @@ extern int p;
 void vms()
 {
     PageEntry pe();
-    vector<PageEntry> FIFO_MAIN;
-    vector<PageEntry> LRU_SEC;
+    deque <PageEntry> FIFO_MAIN;
+    deque <PageEntry> LRU_SEC;
+
     int numReads = 0;
     int numWrites = 0;
     int lru_numOfFrames = (numOfFrames * p) / 100;
@@ -37,11 +39,25 @@ void vms()
         {    
             auto indexFound = find(LRU_SEC.begin(), LRU_SEC.end(), inputVector[i]);
             int index = distance(LRU_SEC.begin(), indexFound);
+
             /*page is in LRU and not in FIFO; FIFO is full*/
             if (indexFound != LRU_SEC.end()) {
                 //update W
-                //move to back to FIFO
+                if (inputVector[i].getOperation() == 'W')
+                {
+                    LRU_SEC[index].setOperation('W');
+                }
+
+                /*move from lru to back of FIFO*/
+                PageEntry vpe = LRU_SEC[index];
+                LRU_SEC.erase(LRU_SEC.begin() + index);
+                FIFO_MAIN.push_back(vpe);
+                
                 //move front of fifo to lru making it the newest page
+                PageEntry vpee = FIFO_MAIN.front();
+                LRU_SEC.push_front(vpee);
+                FIFO_MAIN.pop_front();
+
             }
 
             /*page not in FIFO and FIFO not full*/
