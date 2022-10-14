@@ -1,11 +1,13 @@
 // File that implements segmented-fifo polciy 
 #include "policies.h"
 #include "dataStructures.h"
-#include "deque"
+#include <deque>
+#include <queue>
 
 extern vector<PageEntry> inputVector;
 extern int numOfFrames;
 extern int p;
+void frontFifo_to_frontLru(deque <PageEntry>& FIFO, deque <PageEntry>& LRU);
 
 void vms()
 {
@@ -38,10 +40,7 @@ void vms()
             LRU_SEC.erase(LRU_SEC.begin() + lru_index);
             FIFO_MAIN.push_back(vpe);
 
-            //move front of fifo to lru making it the newest page
-            PageEntry vpee = FIFO_MAIN.front();
-            LRU_SEC.push_front(vpee);
-            FIFO_MAIN.pop_front();
+            frontFifo_to_frontLru(FIFO_MAIN, LRU_SEC);
         }
 
         auto indexFound = find(FIFO_MAIN.begin(), FIFO_MAIN.end(), inputVector[i]);
@@ -59,12 +58,12 @@ void vms()
         //page is not in fifo 
         else 
         {    
-          
+            /*increment read every time it needs to read*/
+            numReads++;
 
             /*page not in FIFO and FIFO not full*/
             if (FIFO_MAIN.size() < fifo_numOfFrames) 
             {
-                numReads++;
                 //add page to back of FIFO
                 FIFO_MAIN.push_back(inputVector[i]);
             }
@@ -72,21 +71,15 @@ void vms()
             /*page not in FIFO and FIFO is full, LRU not full*/
             else if (FIFO_MAIN.size() == fifo_numOfFrames && LRU_SEC.size() < lru_numOfFrames) 
             {
-                numReads++;
-                //eject from fifo
-                FIFO_MAIN.pop_front();
-                //move to lru, making it the newest
-                PageEntry vpee = FIFO_MAIN.front();
-                LRU_SEC.push_front(vpee);
-                //put in FIFO
+                //move front of fifo to front of lru
+                frontFifo_to_frontLru(FIFO_MAIN, LRU_SEC);
+                //put the new page in FIFO
                 FIFO_MAIN.push_back(inputVector[i]);
             }
 
             /*page is not in FIFO and not in LRU*/
             else if (FIFO_MAIN.size() == fifo_numOfFrames && LRU_SEC.size() == lru_numOfFrames) 
             {
-                numReads++;
-
                 //eject oldest lru - from the back
                 PageEntry temp = LRU_SEC.back();
                 if (temp.getOperation() == 'W') {
@@ -95,9 +88,7 @@ void vms()
                 LRU_SEC.pop_back();
 
                 //move front of fifo to front of lru
-                PageEntry temp2 = FIFO_MAIN.front();
-                FIFO_MAIN.pop_front();
-                LRU_SEC.push_front(temp2);
+                frontFifo_to_frontLru(FIFO_MAIN, LRU_SEC);
                 //add new page to back of fifo
                 FIFO_MAIN.push_back(inputVector[i]);
             }
@@ -111,6 +102,11 @@ void vms()
     cout << "Total disk writes: " << numWrites << endl;
 }
 
-// NECESSARY HELPER FUNCTIONS FOR VMS
-//add page to back of fifo
-//move front fifo to lru
+
+void frontFifo_to_frontLru(deque <PageEntry>& FIFO, deque <PageEntry>& LRU) {
+    PageEntry vpee = FIFO.front();
+    //eject from fifo
+    FIFO.pop_front();
+    //move to front of LRU
+    LRU.push_front(vpee);
+}
