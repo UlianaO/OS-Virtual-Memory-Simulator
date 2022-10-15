@@ -8,4 +8,4 @@
 memsim: memsim.cpp fifo.cpp lru.cpp vms.cpp dataStructures.cpp policies.h dataStructures.h
 	g++ memsim.cpp fifo.cpp lru.cpp vms.cpp dataStructures.cpp -o memsim
 
-# Use "./memsim <tracefile> <nframes> <lru|fifo|vms> <debug|quiet>" to run the files
+# Use "./memsim (or .\memsim) <tracefile> <nframes> <lru|fifo|vms> (<p> if vms) <debug|quiet>" to run the files

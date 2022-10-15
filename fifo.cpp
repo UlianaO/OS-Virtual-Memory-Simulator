@@ -19,6 +19,9 @@ void fifo()
 
     for (int i = 0; i < inputVector.size(); i++)
     {
+        if (mode == "debug")
+            inputVector[i].printPageInfo();
+
         // Page is in FIFO cache/page table
         auto indexFound = find(FIFO.begin(), FIFO.end(), inputVector[i]);
         int index = distance(FIFO.begin(), indexFound);

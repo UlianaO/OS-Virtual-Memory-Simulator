@@ -9,6 +9,8 @@
 #include <iomanip>
 #include <limits>
 #include <algorithm>
+#include <deque>
+#include <queue>
 
 using namespace std;
 
@@ -68,7 +70,8 @@ public:
     // Print info to debug
     void printPageInfo()
     {
-        cout << "Address: " << address << " | Operation: " << operation << " | Page number: " << pageNum << " | isDirty? " << isDirty << endl;
+        cout << "Address: " << address << " | Operation: " << operation << " | Page number: " << pageNum << endl;
+        //cout << "Address: " << address << " | Operation: " << operation << " | Page number: " << pageNum << " | isDirty? " << isDirty << endl;
     }
 
     // Use to find whether page is found (for the find() operation)

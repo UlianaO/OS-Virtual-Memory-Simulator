@@ -1,8 +1,6 @@
 // File that implements segmented-fifo polciy 
 #include "policies.h"
 #include "dataStructures.h"
-#include <deque>
-#include <queue>
 
 extern vector<PageEntry> inputVector;
 extern int numOfFrames;
@@ -42,11 +40,17 @@ void segfifo()
 
     for (int i = 0; i < inputVector.size(); i++)
     {
+        if (mode == "debug")
+            inputVector[i].printPageInfo();
+            
         auto lru_indexFound = find(LRU_SEC.begin(), LRU_SEC.end(), inputVector[i]);
         int lru_index = distance(LRU_SEC.begin(), lru_indexFound);
 
         /*page is in LRU and not in FIFO; FIFO is full*/
         if (lru_indexFound != LRU_SEC.end()) {
+            if (mode == "debug")
+                cout << "Page is in LRU but not in FIFO" << endl;
+
             //update W
             if (inputVector[i].getOperation() == 'W')
             {
@@ -67,6 +71,9 @@ void segfifo()
         /*page is in FIFO*/
         if (indexFound != FIFO_MAIN.end())
         {
+            if (mode == "debug")
+                cout << "HIT" << endl;
+
             //update W bit            
             if (inputVector[i].getOperation() == 'W')  
             {
@@ -76,6 +83,9 @@ void segfifo()
         //page is not in fifo 
         else 
         {    
+            if (mode == "debug")
+                cout << "MISS" << endl;
+
             /*increment read every time it needs to read*/
             numReads++;
 
