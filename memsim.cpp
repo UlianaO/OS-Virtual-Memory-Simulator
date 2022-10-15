@@ -3,6 +3,7 @@
 #include "policies.h"
 #include "dataStructures.h"
 #define _CRT_SECURE_NO_WARNINGS
+#include <chrono>
 
     int numOfFrames;
     std::string algorithm;
@@ -56,15 +57,30 @@ int main(int argc, char* argv[]) {
         inputVector.push_back(pe);  // Store adress and r/w
     }
     cout << "Done reading file" << endl;
+    std::chrono::duration<double, std::milli> duration;
 
     if (algorithm == "fifo") {
         std::cout << "Hello from fifo" << std::endl;
+        auto start = std::chrono::high_resolution_clock::now();
         fifo();
+        auto stop = std::chrono::high_resolution_clock::now();
+        duration = stop - start;
+        std::cout << "FIFO took " << duration.count() << "ms" << std::endl;
     }
-    else if (algorithm == "lru")
+    else if (algorithm == "lru") {
+        auto start = std::chrono::high_resolution_clock::now();
         lru();
-    else if (algorithm == "vms")
+        auto stop = std::chrono::high_resolution_clock::now();
+        duration = stop - start;
+        std::cout << "LRU took " << duration.count() << "ms" << std::endl;
+    }
+    else if (algorithm == "vms") {
+        auto start = std::chrono::high_resolution_clock::now();
         segfifo();
+        auto stop = std::chrono::high_resolution_clock::now();
+        duration = stop - start;
+        std::cout << "SFIFO took " << duration.count() << "ms" << std::endl;
+    }
     else
     {
         cout << "Invalid algorithm." << endl;
