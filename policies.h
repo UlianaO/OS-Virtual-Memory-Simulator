@@ -23,8 +23,8 @@ private:
     int isDirty;
 
     // found by shifting address >> 12 (logical address/page size. page size is 4096 = 2^12)
-    //int pageNum = address/4096;
     int pageNum;
+    
 public:
     // Constructors
     PageEntry() { }
@@ -70,12 +70,6 @@ public:
     {
         cout << "Address: " << address << " | Operation: " << operation << " | Page number: " << pageNum << " | isDirty? " << isDirty << endl;
     }
-
-    // // Use to find whether address is found (for the find() operation)
-    // bool operator==(const PageEntry& pe)
-    // {
-    //     return address == pe.address;
-    // }
 
     // Use to find whether page is found (for the find() operation)
     bool operator==(const PageEntry& pe)

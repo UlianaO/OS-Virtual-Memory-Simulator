@@ -21,7 +21,6 @@
 // ULIANA CHECKKKKKKKKKKK
 
 int main(int argc, char* argv[]) {
-	std::cout << "Hello" << std::endl;
 
     // the input in the format: memsim <tracefile> <nframes> <lru|fifo|vms> <debug|quiet> 
    if (argc >= 5) {
@@ -55,10 +54,12 @@ int main(int argc, char* argv[]) {
         PageEntry pe(addr, rw);     
         inputVector.push_back(pe);  // Store adress and r/w
     }
-    cout << "Done reading file" << endl;
 
+    if (mode == "debug")
+        cout << "Done reading file." << endl;
+
+    // Perform algorithm mentioned
     if (algorithm == "fifo") {
-        std::cout << "Hello from fifo" << std::endl;
         fifo();
     }
     else if (algorithm == "lru")

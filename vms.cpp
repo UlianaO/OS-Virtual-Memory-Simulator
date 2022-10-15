@@ -8,6 +8,7 @@ extern vector<PageEntry> inputVector;
 extern int numOfFrames;
 extern int p;
 void frontFifo_to_frontLru(deque <PageEntry>& FIFO, deque <PageEntry>& LRU);
+extern string mode;
 
 void segfifo()
 {
@@ -20,18 +21,21 @@ void segfifo()
     int lru_numOfFrames = (numOfFrames * p) / 100;
     int fifo_numOfFrames = numOfFrames - lru_numOfFrames;
 
-    cout << "VMS" << endl;
+    if (mode == "debug")
+        cout << "VMS" << endl;
 
     // Edge cases
     if (lru_numOfFrames == 0)    // Degenerates into a FIFO algorithm
     {
-        //cout << "LRU is 0" << endl;
+        if (mode == "debug")
+            cout << "LRU is 0" << endl;
         fifo();
         exit(0);
     }
     if (fifo_numOfFrames == 0)  // Degenerates into an LRU algorithm
     {
-        //cout << "FIFO is 0" << endl;
+        if (mode == "debug")
+            cout << "FIFO is 0" << endl;
         lru();
         exit(0);
     }
