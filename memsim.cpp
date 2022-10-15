@@ -2,6 +2,7 @@
 
 #include "policies.h"
 #include "dataStructures.h"
+#include <chrono>
 #define _CRT_SECURE_NO_WARNINGS
 
     int numOfFrames;
@@ -18,11 +19,10 @@
     void lru();
     void segfifo();
 
-// ULIANA CHECKKKKKKKKKKK
+// ULIANA CHECKKKKKKKKKK
 
 int main(int argc, char* argv[]) {
 	std::cout << "Hello" << std::endl;
-
     // the input in the format: memsim <tracefile> <nframes> <lru|fifo|vms> <debug|quiet> 
    if (argc >= 5) {
         filePath = makeLowerCase(argv[1]);
@@ -57,24 +57,42 @@ int main(int argc, char* argv[]) {
     }
     cout << "Done reading file" << endl;
 
+    std::chrono::duration<double, std::milli> duration;
+    
     if (algorithm == "fifo") {
         std::cout << "Hello from fifo" << std::endl;
+        auto start = std::chrono::high_resolution_clock::now();
         fifo();
+        auto stop = std::chrono::high_resolution_clock::now();
+        duration = stop - start;
+        std::cout << "FIFO took " << duration.count() << "ms" << std::endl;
     }
-    else if (algorithm == "lru")
+    else if (algorithm == "lru") {
+        auto start = std::chrono::high_resolution_clock::now();
         lru();
-    else if (algorithm == "vms")
+        auto stop = std::chrono::high_resolution_clock::now();
+        duration = stop - start;
+        std::cout << "LRU took " << duration.count() << "ms" << std::endl;
+
+    }
+    else if (algorithm == "vms") {
+        auto start = std::chrono::high_resolution_clock::now();
         segfifo();
+        auto stop = std::chrono::high_resolution_clock::now();
+        duration = stop - start;
+        std::cout << "SFIFO took " << duration.count() << "ms" << std::endl;
+
+    }
     else
     {
         cout << "Invalid algorithm." << endl;
         return 1;
     }
 
-
     //Close files
     inFile.close();
     fclose(file);
+
 	return 0;
 }
 
