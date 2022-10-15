@@ -22,6 +22,20 @@ void segfifo()
 
     cout << "VMS" << endl;
 
+    // Edge cases
+    if (lru_numOfFrames == 0)    // Degenerates into a FIFO algorithm
+    {
+        //cout << "LRU is 0" << endl;
+        fifo();
+        exit(0);
+    }
+    if (fifo_numOfFrames == 0)  // Degenerates into an LRU algorithm
+    {
+        //cout << "FIFO is 0" << endl;
+        lru();
+        exit(0);
+    }
+
     for (int i = 0; i < inputVector.size(); i++)
     {
         auto lru_indexFound = find(LRU_SEC.begin(), LRU_SEC.end(), inputVector[i]);
@@ -95,7 +109,6 @@ void segfifo()
         }
     }
 
-    
     cout << "Total memory frames: " << numOfFrames << endl;
     cout << "Events in trace: " << inputVector.size() << endl;
     cout << "Total disk reads: " << numReads << endl;
