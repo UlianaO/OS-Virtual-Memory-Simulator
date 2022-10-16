@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dataStructures.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="policies.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -33,9 +30,6 @@
       <Filter>Resource Files</Filter>
     </ClCompile>
     <ClCompile Include="vms.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="dataStructures.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,12 +1,15 @@
 // File that implements segmented-fifo polciy 
 #include "policies.h"
-#include "dataStructures.h"
 
 extern vector<PageEntry> inputVector;
 extern int numOfFrames;
 extern int p;
 void frontFifo_to_frontLru(deque <PageEntry>& FIFO, deque <PageEntry>& LRU);
 extern string mode;
+
+void vms();
+void fifo();
+void lru();
 
 void segfifo()
 {
