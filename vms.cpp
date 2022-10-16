@@ -1,13 +1,12 @@
 // File that implements segmented-fifo polciy 
 #include "policies.h"
 #include "dataStructures.h"
-#include <deque>
-#include <queue>
 
 extern vector<PageEntry> inputVector;
 extern int numOfFrames;
 extern int p;
 void frontFifo_to_frontLru(deque <PageEntry>& FIFO, deque <PageEntry>& LRU);
+extern string mode;
 
 void segfifo()
 {
@@ -20,29 +19,38 @@ void segfifo()
     int lru_numOfFrames = (numOfFrames * p) / 100;
     int fifo_numOfFrames = numOfFrames - lru_numOfFrames;
 
-    cout << "VMS" << endl;
+    if (mode == "debug")
+        cout << "VMS" << endl;
 
     // Edge cases
     if (lru_numOfFrames == 0)    // Degenerates into a FIFO algorithm
     {
-        //cout << "LRU is 0" << endl;
+        if (mode == "debug")
+            cout << "LRU is 0" << endl;
         fifo();
         exit(0);
     }
     if (fifo_numOfFrames == 0)  // Degenerates into an LRU algorithm
     {
-        //cout << "FIFO is 0" << endl;
+        if (mode == "debug")
+            cout << "FIFO is 0" << endl;
         lru();
         exit(0);
     }
 
     for (int i = 0; i < inputVector.size(); i++)
     {
+        if (mode == "debug")
+            inputVector[i].printPageInfo();
+            
         auto lru_indexFound = find(LRU_SEC.begin(), LRU_SEC.end(), inputVector[i]);
         int lru_index = distance(LRU_SEC.begin(), lru_indexFound);
 
         /*page is in LRU and not in FIFO; FIFO is full*/
         if (lru_indexFound != LRU_SEC.end()) {
+            if (mode == "debug")
+                cout << "Page is in LRU but not in FIFO" << endl;
+
             //update W
             if (inputVector[i].getOperation() == 'W')
             {
@@ -63,6 +71,9 @@ void segfifo()
         /*page is in FIFO*/
         if (indexFound != FIFO_MAIN.end())
         {
+            if (mode == "debug")
+                cout << "HIT" << endl;
+
             //update W bit            
             if (inputVector[i].getOperation() == 'W')  
             {
@@ -72,6 +83,9 @@ void segfifo()
         //page is not in fifo 
         else 
         {    
+            if (mode == "debug")
+                cout << "MISS" << endl;
+
             /*increment read every time it needs to read*/
             numReads++;
 
