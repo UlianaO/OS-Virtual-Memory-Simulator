@@ -1,4 +1,4 @@
-// File that implements first-in first-out replacement policy
+// File that implements LRU replacement policy
 #include "policies.h"
 #include <deque>
 
@@ -50,7 +50,7 @@ void lru()
             // Page is NOT in LRU and LRU is NOT full
             if (LRU.size() < numOfFrames)
             {
-                // Solution: Add new page to back of FIFO
+                // Solution: Add new page to back of LRU
                 LRU.push_back(inputVector[i]);
                 numReads++;
             }
