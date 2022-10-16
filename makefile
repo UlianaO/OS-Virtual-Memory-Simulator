@@ -1,4 +1,5 @@
 # Use "make memsim" or "mingw32-make memsim" in the terminal to use the makefile
+# If on Windows, run "nmake"
 
 # If running on the student cluster (uncomment this)
 #memsim: memsim.cpp fifo.cpp lru.cpp vms.cpp dataStructures.cpp

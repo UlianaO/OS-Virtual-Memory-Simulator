@@ -52,5 +52,6 @@
     <None Include="bzip.trace">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="makefile" />
   </ItemGroup>
 </Project>

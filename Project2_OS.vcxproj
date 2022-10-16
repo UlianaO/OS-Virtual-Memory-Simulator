@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bzip.trace" />
+    <None Include="makefile" />
     <None Include="sixpack.trace" />
     <None Include="small.trace" />
     <None Include="smaller.trace" />
