@@ -1,6 +1,5 @@
 // File that implements first-in first-out replacement policy
 #include "policies.h"
-#include "dataStructures.h"
 
 extern vector<PageEntry> inputVector;
 extern int numOfFrames;

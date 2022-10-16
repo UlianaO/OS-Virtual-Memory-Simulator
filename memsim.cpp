@@ -1,7 +1,6 @@
 // Main interface of the simulator, it takes user input in two forms
 
 #include "policies.h"
-#include "dataStructures.h"
 #define _CRT_SECURE_NO_WARNINGS
 #include <chrono>
 
