@@ -1,6 +1,5 @@
 // File that implements LRU replacement policy
 #include "policies.h"
-#include <deque>
 
 extern vector<PageEntry> inputVector;
 extern int numOfFrames;
@@ -23,7 +22,6 @@ void lru()
         if (mode == "debug")
             inputVector[i].printPageInfo();
 
-
         auto indexFound = find(LRU.begin(), LRU.end(), inputVector[i]);
         int index = distance(LRU.begin(), indexFound);
 
@@ -33,7 +31,7 @@ void lru()
             if (mode == "debug")
                 std::cout << "HIT" << endl;
 
-            // Solution: Update write if ‘W’ encountered
+            // Solution: Update write if 'W' encountered
             if (inputVector[i].getOperation() == 'W')
                 LRU[index].setOperation('W');
 

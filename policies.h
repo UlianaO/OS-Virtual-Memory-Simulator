@@ -1,4 +1,4 @@
-// The file declares  the  policies previously mentioned to be used by the simulator
+// The file declares the policies previously mentioned to be used by the simulator
 
 #include <iostream>
 #include <string>
@@ -10,6 +10,12 @@
 #include <limits>
 #include <algorithm>
 #include <deque>
+#include <chrono>
+#define _CRT_SECURE_NO_WARNINGS
+
+void fifo();
+void lru();
+void segfifo();
 
 using namespace std;
 
@@ -70,7 +76,6 @@ public:
     void printPageInfo()
     {
         cout << "Address: " << address << " | Operation: " << operation << " | Page number: " << pageNum << endl;
-        //cout << "Address: " << address << " | Operation: " << operation << " | Page number: " << pageNum << " | isDirty? " << isDirty << endl;
     }
 
     // Use to find whether page is found (for the find() operation)
