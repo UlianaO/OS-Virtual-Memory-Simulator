@@ -1,22 +1,19 @@
 // Main interface of the simulator, it takes user input in two forms
 
 #include "policies.h"
-#define _CRT_SECURE_NO_WARNINGS
-#include <chrono>
 
-    int numOfFrames;
-    std::string algorithm;
-    std::string mode;
-    std::string filePath;
-    int p;
-    vector<PageEntry> inputVector;  // Will store all of the adresses and r/w in vector (using PageEntry class) which were taken from the input file
+int numOfFrames;
+std::string algorithm;
+std::string mode;
+std::string filePath;
+int p;
+vector<PageEntry> inputVector;  // Will store all of the adresses and r/w in vector (using PageEntry class) which were taken from the input file
 
-    std::string makeLowerCase(std::string str);
+std::string makeLowerCase(std::string str);
 
-
-    void fifo();
-    void lru();
-    void segfifo();
+void fifo();
+void lru();
+void segfifo();
 
 // ULIANA CHECKKKKKKKKKKK
 
@@ -55,7 +52,7 @@ int main(int argc, char* argv[]) {
         inputVector.push_back(pe);  // Store adress and r/w
     }
 
-    cout << "Done reading file" << endl;
+    //cout << "Done reading file" << endl;
     std::chrono::duration<double, std::milli> duration;
 
 
@@ -64,7 +61,7 @@ int main(int argc, char* argv[]) {
 
     // Perform algorithm mentioned
     if (algorithm == "fifo") {
-        std::cout << "Hello from fifo" << std::endl;
+        //std::cout << "Hello from fifo" << std::endl;
         auto start = std::chrono::high_resolution_clock::now();
         fifo();
         auto stop = std::chrono::high_resolution_clock::now();
@@ -90,7 +87,6 @@ int main(int argc, char* argv[]) {
         cout << "Invalid algorithm." << endl;
         return 1;
     }
-
 
     //Close files
     inFile.close();

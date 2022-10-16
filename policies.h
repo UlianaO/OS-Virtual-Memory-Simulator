@@ -1,4 +1,4 @@
-// The file declares  the  policies previously mentioned to be used by the simulator
+// The file includes the PageEntry class which stores information for each entry
 
 #include <iostream>
 #include <string>
@@ -10,6 +10,8 @@
 #include <limits>
 #include <algorithm>
 #include <deque>
+#include <chrono>
+#define _CRT_SECURE_NO_WARNINGS
 
 using namespace std;
 
