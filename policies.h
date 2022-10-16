@@ -15,6 +15,10 @@
 
 using namespace std;
 
+void fifo();
+void lru();
+void segfifo();
+
 class PageEntry {
 private:
     unsigned address;

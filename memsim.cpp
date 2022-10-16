@@ -11,10 +11,6 @@ vector<PageEntry> inputVector;  // Will store all of the adresses and r/w in vec
 
 std::string makeLowerCase(std::string str);
 
-void fifo();
-void lru();
-void segfifo();
-
 // ULIANA CHECKKKKKKKKKKK
 
 int main(int argc, char* argv[]) {
