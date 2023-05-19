@@ -1,31 +1,31 @@
 # OS_Project2
 
-For this project, the FIFO, LRU, and the Segmented FIFO policies were implemented. __
-Trace files such as bzip.trace and sixpack.trace, which are real recordings of a running program, were used in our simulation. __
-__
-Files necessary to compile the program:__
+For this project, the FIFO, LRU, and the Segmented FIFO policies were implemented. <br/>
+Trace files such as bzip.trace and sixpack.trace, which are real recordings of a running program, were used in our simulation. <br/>
+<br/>
+Files necessary to compile the program:<br/>
 ● memsim.cpp: The main interface of the simulator, takes inputs from the terminal and the
-trace files __
-● fifo.cpp: File that implements the First-In-First-Out policy
-● lru.cpp: File that implements the Least Recently Used policy
-● vms.cpp: File that implements the Segmented FIFO policy
+trace files <br/>
+● fifo.cpp: File that implements the First-In-First-Out policy <br/>
+● lru.cpp: File that implements the Least Recently Used policy <br/>
+● vms.cpp: File that implements the Segmented FIFO policy <br/>
 ● makefile: The makefile which compiles all of these files. The makefile target is called
-memsim
+memsim <br/>
 ● policies.h: File which includes the policies and the PageEntry class which stores
-information for each entry
-● bzip.trace: Trace file to be tested
-● sixpack.trace: Trace file to be tested
-
-
-To compile the program:
+information for each entry <br/>
+● bzip.trace: Trace file to be tested <br/>
+● sixpack.trace: Trace file to be tested <br/>
+<br/>
+<br/>
+To compile the program:<br/>
 1. Use “make memsim” to compile all of the files using the makefile, if it is compiled on the
 student cluster. Else, use “mingw32-make memsim” or “nmake memsim” to compile
-them.
+them. <br/>
 2. Use “g++ -std=c++11 memsim.cpp fifo.cpp lru.cpp vms.cpp -o memsim” if compiling on
 the cluster. Else, use “g++ memsim.cpp fifo.cpp lru.cpp vms.cpp -o memsim” to compile
-them.
-
-
+them. <br/>
+<br/>
+<br/>
 To run the program:
 1. For FIFO and LRU use this format:
 “./memsim tracefile nFrames policy quiet/debug” if on the student cluster or “.\memsim
