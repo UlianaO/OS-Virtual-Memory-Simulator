@@ -1,11 +1,11 @@
 # OS_Project2
 
-For this project, the FIFO, LRU, and the Segmented FIFO policies were implemented.
-Trace files such as bzip.trace and sixpack.trace, which are real recordings of a running program, were used in our simulation.
-
-Files necessary to compile the program:
+For this project, the FIFO, LRU, and the Segmented FIFO policies were implemented. __
+Trace files such as bzip.trace and sixpack.trace, which are real recordings of a running program, were used in our simulation. __
+__
+Files necessary to compile the program:__
 ● memsim.cpp: The main interface of the simulator, takes inputs from the terminal and the
-trace files
+trace files __
 ● fifo.cpp: File that implements the First-In-First-Out policy
 ● lru.cpp: File that implements the Least Recently Used policy
 ● vms.cpp: File that implements the Segmented FIFO policy
