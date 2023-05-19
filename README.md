@@ -3,7 +3,7 @@
 For this project, the FIFO, LRU, and the Segmented FIFO policies were implemented. <br/>
 Trace files such as bzip.trace and sixpack.trace, which are real recordings of a running program, were used in our simulation. <br/>
 <br/>
-Files necessary to compile the program:<br/>
+Files necessary to compile the program:<br/> <br/>
 ● memsim.cpp: The main interface of the simulator, takes inputs from the terminal and the
 trace files <br/>
 ● fifo.cpp: File that implements the First-In-First-Out policy <br/>
@@ -50,13 +50,13 @@ Total memory frames: 64<br/>
 Events in trace: 1000000<br/>
 Total disk reads: 1467<br/>
 Total disk writes: 514<br/>
-FIFO took 518.011ms<br/>
+FIFO took 518.011ms<br/><br/>
 ./memsim bzip.trace 64 vms 25 quiet<br/>
 Total memory frames: 64<br/>
 Events in trace: 1000000<br/>
 Total disk reads: 1367<br/>
 Total disk writes: 471<br/>
-SFIFO took 1107.97ms<br/>
+SFIFO took 1107.97ms<br/><br/>
 ./memsim bzip.trace 64 lru quiet<br/>
 Total memory frames: 64<br/>
 Events in trace: 1000000<br/>
