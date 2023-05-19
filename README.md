@@ -26,40 +26,40 @@ the cluster. Else, use “g++ memsim.cpp fifo.cpp lru.cpp vms.cpp -o memsim” t
 them. <br/>
 <br/>
 <br/>
-To run the program:
-1. For FIFO and LRU use this format:
-“./memsim tracefile nFrames policy quiet/debug” if on the student cluster or “.\memsim
-tracefile nFrames policy quiet/debug” if not on the student cluster
-2. For Segmented FIFO (vms) use this format:
-“./memsim tracefile nFrames policy percentage quiet/debug” if on the student cluster or
-“.\memsim tracefile nFrames policy quiet/debug” if not on the student cluster
-
-
-Explanation of terminal inputs:
-● tracefile: Name of the tracefile (bzip.trace or sixpack.trace for example)
-● nFrames: Number of frames to use
-● policy: fifo, lru, or vms
-● percentage: If using vms, this is the percentage between 1 and 100
-● quiet: Will only print statistics at the end
-● debug: Will print information for every event that happens.
-
-
-Running Examples:
-./memsim bzip.trace 64 fifo quiet
-Total memory frames: 64
-Events in trace: 1000000
-Total disk reads: 1467
-Total disk writes: 514
-FIFO took 518.011ms
-./memsim bzip.trace 64 vms 25 quiet
-Total memory frames: 64
-Events in trace: 1000000
-Total disk reads: 1367
-Total disk writes: 471
-SFIFO took 1107.97ms
-./memsim bzip.trace 64 lru quiet
-Total memory frames: 64
-Events in trace: 1000000
-Total disk reads: 1264
-Total disk writes: 420
-LRU took 1636.02ms
+To run the program: <br/>
+1. For FIFO and LRU use this format: <br/>
+“./memsim tracefile nFrames policy quiet/debug” if on the student cluster or  <br/>
+“.\memsim tracefile nFrames policy quiet/debug” if not on the student cluster <br/>
+2. For Segmented FIFO (vms) use this format: <br/>
+“./memsim tracefile nFrames policy percentage quiet/debug” if on the student cluster or <br/>
+“.\memsim tracefile nFrames policy quiet/debug” if not on the student cluster <br/>
+<br/>
+<br/>
+Explanation of terminal inputs: <br/>
+● tracefile: Name of the tracefile (bzip.trace or sixpack.trace for example) <br/>
+● nFrames: Number of frames to use <br/>
+● policy: fifo, lru, or vms<br/>
+● percentage: If using vms, this is the percentage between 1 and 100<br/>
+● quiet: Will only print statistics at the end<br/>
+● debug: Will print information for every event that happens.<br/>
+<br/>
+<br/>
+Running Examples:<br/>
+./memsim bzip.trace 64 fifo quiet<br/>
+Total memory frames: 64<br/>
+Events in trace: 1000000<br/>
+Total disk reads: 1467<br/>
+Total disk writes: 514<br/>
+FIFO took 518.011ms<br/>
+./memsim bzip.trace 64 vms 25 quiet<br/>
+Total memory frames: 64<br/>
+Events in trace: 1000000<br/>
+Total disk reads: 1367<br/>
+Total disk writes: 471<br/>
+SFIFO took 1107.97ms<br/>
+./memsim bzip.trace 64 lru quiet<br/>
+Total memory frames: 64<br/>
+Events in trace: 1000000<br/>
+Total disk reads: 1264<br/>
+Total disk writes: 420<br/>
+LRU took 1636.02ms<br/>
