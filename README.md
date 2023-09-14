@@ -1,4 +1,5 @@
-# OS_Project2
+# Virtual Memory Simulator
+The goal is to demonstrate understanding of page replacement algorithm processes and measure their effect on overall system performance using real-world memory traces.
 
 For this project, the FIFO, LRU, and the Segmented FIFO policies were implemented. <br/>
 Trace files such as bzip.trace and sixpack.trace, which are real recordings of a running program, were used in our simulation. <br/>
